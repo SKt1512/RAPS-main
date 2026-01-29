@@ -4,3 +4,35 @@ __pycache__/
 logs/
 .cache/
 models/*.pt
+
+# Traffic Density
+traffic density/.venv
+traffic density/pip-wheel-metadata/
+traffic density/.vscode/
+traffic density/.ipynb_checkpoints/
+traffic density/outputs/
+traffic density/results/
+traffic density/runs/
+traffic density/weights/
+traffic density/checkpoints/
+traffic density/**/*.pt
+traffic density/data/
+traffic density/UA-DETRAC
+traffic density/UA-DETRAC/DETRAC-Images/
+traffic density/UA-DETRAC/DETRAC-MOT-toolkit/
+traffic density/UA-DETRAC/DETRAC-Test-Annotations-XML/
+traffic density/UA-DETRAC/DETRAC-Train-Annotations-XML/
+traffic density/**/*.csv
+traffic density/**/*.json
+traffic density/**/*.pkl
+traffic density/**/*.npy
+traffic density/**/*.npz
+traffic density/**/*.mp4
+traffic density/**/*.avi
+traffic density/**/*.mov
+traffic density/**/*.mkv
+traffic density/**/*.jpg
+traffic density/**/*.jpeg
+traffic density/**/*.png
+traffic density/tmp/
+traffic density/temp/
