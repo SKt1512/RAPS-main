@@ -252,7 +252,4 @@ RAPS demonstrates how heterogeneous AI signals can be fused to adapt routing dec
 
 ---
 ## Author
-Naqshab Javed
-Priyaansh Malik
-Ayush Gupta
 Sonu Kharayat
