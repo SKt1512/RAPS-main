@@ -40,9 +40,7 @@ SIMULATED_TEXT_STREAM: List[str] = [
 
 
 def _clean_text(text: str) -> str:
-    """
-    Basic text cleaning for NLP robustness.
-    """
+
     text = re.sub(r"http\S+", "", text)
     text = re.sub(r"#\S+", "", text)
     text = re.sub(r"@\S+", "", text)
@@ -50,13 +48,6 @@ def _clean_text(text: str) -> str:
 
 
 def _fetch_text_stream() -> List[str]:
-    """
-    Fetches text data from live or simulated sources.
-
-    NOTE:
-    Live Twitter integration is intentionally abstracted.
-    In production, this would be replaced with a streaming client.
-    """
     if USE_SIMULATED_TEXT_DATA or not TWITTER_BEARER_TOKEN:
         logger.info("Using simulated text data")
         return SIMULATED_TEXT_STREAM
@@ -69,14 +60,6 @@ def _fetch_text_stream() -> List[str]:
 
 
 def get_incident_factor() -> float:
-    """
-    Computes traffic incident severity factor based on textual signals.
-
-    Returns:
-        float: value between 0.0 and 1.0
-               0.0 → no incident
-               1.0 → severe incident
-    """
 
     if classifier is None:
         logger.warning("NLP model unavailable; returning neutral factor")

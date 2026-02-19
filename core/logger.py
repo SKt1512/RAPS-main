@@ -3,7 +3,6 @@ import os
 
 from config.settings import LOG_FILE, LOG_LEVEL
 
-# Ensure log directory exists (production-safe)
 
 log_dir = os.path.dirname(LOG_FILE)
 if log_dir and not os.path.exists(log_dir):

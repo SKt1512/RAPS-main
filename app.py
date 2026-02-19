@@ -25,7 +25,7 @@ st.markdown(
 # SIDEBAR – LOCATIONS
 # ============================================================
 
-st.sidebar.header("📍 San Francisco Locations")
+st.sidebar.header("San Francisco Locations")
 
 landmarks = {
     "Downtown SF": (37.7749, -122.4194),
@@ -56,7 +56,7 @@ start_lat, start_lon = landmarks[start_place]
 end_lat, end_lon = landmarks[end_place]
 
 refresh_rate = st.sidebar.slider(
-    "🔄 Optimization Refresh Rate (seconds)",
+    "Optimization Refresh Rate (seconds)",
     min_value=2,
     max_value=15,
     value=5
@@ -66,7 +66,7 @@ refresh_rate = st.sidebar.slider(
 # VIDEO INPUT (FIX ADDED)
 # ============================================================
 
-st.subheader("📹 Traffic Video Input")
+st.subheader(" Traffic Video Input")
 
 video_file = st.file_uploader(
     "Upload real-world traffic video (.mp4)",
@@ -87,12 +87,12 @@ if "running" not in st.session_state:
 # SYSTEM CONTROLS
 # ============================================================
 
-st.subheader("⚙️ System Control")
+st.subheader("System Control")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("🚀 Initialize System"):
+    if st.button("Initialize System"):
         with st.spinner("Initializing routing engine..."):
             st.session_state.orchestrator = AdaptiveOrchestrator()
         st.success("System initialized successfully")
@@ -124,12 +124,14 @@ def route_nodes_to_latlon(graph, route):
 # SINGLE MAP RENDER (BASE + ROUTE)
 # ============================================================
 
-st.subheader("🗺️ Route Overview")
+st.subheader("Route Overview")
 
 m = folium.Map(
     location=[start_lat, start_lon],
     zoom_start=13,
-    tiles="CartoDB dark_matter"
+    # tiles="CartoDB dark_matter"
+    # tiles="OpenStreetMap"
+    tiles="CartoDB positron"
 )
 
 # Start marker
@@ -157,7 +159,7 @@ if st.session_state.orchestrator and st.session_state.running:
     route = st.session_state.orchestrator.compute_adaptive_route(
         start_coords=(start_lat, start_lon),
         end_coords=(end_lat, end_lon),
-        video_file=video_file  # 🔥 CRITICAL FIX
+        video_file=video_file 
     )
 
     if route:
@@ -183,6 +185,6 @@ st.caption(
 
 st.markdown("---")
 st.caption(
-    "RAPS | Vision + NLP Driven Adaptive Routing | "
-    "San Francisco | Streamlit + Folium Deployment"
+    "RAPS |  "
+    "San Francisco "
 )

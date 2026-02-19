@@ -7,15 +7,6 @@ from services.vision_service import get_obstacle_factor_from_video
 
 
 class AdaptiveOrchestrator:
-    """
-    Central decision-making unit of RAPS.
-
-    Strategy:
-    1. Compute baseline shortest route
-    2. Fuse vision + NLP congestion signals
-    3. Penalize edges ON the candidate route
-    4. Recompute an alternative adaptive route
-    """
 
     def __init__(self):
         logger.info("Initializing AdaptiveOrchestrator")

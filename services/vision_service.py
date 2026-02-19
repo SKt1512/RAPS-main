@@ -26,7 +26,7 @@ def _load_model() -> Optional[YOLO]:
 
     try:
         logger.info(f"Loading YOLO vision model from {MODEL_PATH}")
-        _model = YOLO(MODEL_PATH)   # ✅ ONLY correct loader
+        _model = YOLO(MODEL_PATH)   
         logger.info("Vision model loaded successfully")
         return _model
 

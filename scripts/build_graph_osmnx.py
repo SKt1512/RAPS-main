@@ -18,4 +18,4 @@ G = ox.add_edge_travel_times(G)
 os.makedirs("data", exist_ok=True)
 ox.save_graphml(G, OUTPUT_GRAPH)
 
-print("✅ San Francisco graph built and saved successfully!")
+print(" San Francisco graph built and saved successfully!")

@@ -9,10 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class RoutingEngine:
-    """
-    Routing engine using a prebuilt OpenStreetMap graph
-    with dynamic edge cost adaptation.
-    """
+
 
     def __init__(self):
         self.graph = self._load_graph()
@@ -57,29 +54,13 @@ class RoutingEngine:
     # ============================================================
 
     def update_edge_cost(self, factor: float):
-        """
-        Legacy sensor-based congestion update.
-
-        NOTE:
-        This method is intentionally deprecated.
-        It does NOT guarantee rerouting because the sensor edge
-        may not lie on the candidate path.
-
-        The adaptive system MUST use `update_route_edge_cost(...)`
-        instead.
-
-        This method is kept only for backward compatibility.
-        """
         logger.warning(
             "update_edge_cost() called, but this method is deprecated. "
             "Use update_route_edge_cost(route, factor) for adaptive routing."
         )
         return
     def update_route_edge_cost(self, route, factor: float):
-        """
-        Apply congestion penalty to edges along the candidate route.
-        Guarantees adaptive rerouting if alternatives exist.
-        """
+        
         penalty = max(1.0, factor)
 
         for u, v in zip(route[:-1], route[1:]):
@@ -106,9 +87,6 @@ class RoutingEngine:
         end_lat: float,
         end_lon: float
     ):
-        """
-        Compute shortest path using UPDATED edge weights.
-        """
 
         start_node = ox.nearest_nodes(self.graph, start_lon, start_lat)
         end_node = ox.nearest_nodes(self.graph, end_lon, end_lat)
@@ -119,7 +97,7 @@ class RoutingEngine:
                 self.graph,
                 start_node,
                 end_node,
-                weight="weight"   # 🔥 FINAL FIX
+                weight="weight"   
             )
 
         except nx.NetworkXNoPath:
